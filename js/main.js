@@ -28,11 +28,12 @@ require.config({
     }
 });
 
-require(['app','backbone','routers/router','controllers/controller'],
-function(app, Backbone, Router, Controller){
+require(['dashboard/dashboard', 'app', 'backbone', ],
+function(dsb, app, Backbone){
     app.start();
-    new Router({
-        controller : Controller
-    });
+    app.startSubApp('Dashboard');
+    //new Router({
+    //    controller : Controller
+    //});
     Backbone.history.start();
 });
