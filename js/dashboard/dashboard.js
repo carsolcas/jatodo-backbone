@@ -2,8 +2,12 @@
 define(['text!dashboard/templates/dashboard-layout.html',
         'dashboard/views/header',
         'dashboard/views/footer',
-        'app', 'marionette',
-        'underscore'], function(tmpl, Header, Footer, App, Marionette, _){
+        'dashboard/views/task_list',
+        'dashboard/collections/task_collection',
+        'app', 
+        'marionette',
+        'underscore'],
+function(tmpl, Header, Footer, TaskList, TaskCollection, App, Marionette, _){
 
     var Dashboard = App.module("Dashboard");
     Dashboard.startWithParent = false;
@@ -51,9 +55,13 @@ define(['text!dashboard/templates/dashboard-layout.html',
             Dashboard.controller.trigger('layout:show');
             this.headerView = new Header();
             this.footerView = new Footer();
+            var taskList = new TaskCollection();
+            this.taskListView = new TaskList({collection:taskList});
 
             this.dsb_header.show(this.headerView);
             this.dsb_footer.show(this.footerView);
+            this.dsb_tasks.show(this.taskListView );
+            taskList.fetch();
         }
     });
 
