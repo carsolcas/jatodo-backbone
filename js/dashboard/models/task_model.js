@@ -9,6 +9,7 @@ define(['app', 'backbone'], function( App, Backbone){
            done : false,
            total_time: 0
       },
+      url: '/api/tasks',
       initialize : function() {
           if (this.isNew()) this.set('created', Date.now());
       },

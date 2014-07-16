@@ -3,6 +3,7 @@ define(['app', 'backbone', 'underscore',
 function( App, Backbone, _, Task){
 'use strict';
     return Backbone.Collection.extend({
-        model: Task
+        model: Task,
+        url : '/api/tasks/'
   });
 });

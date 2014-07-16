@@ -7,7 +7,7 @@ define(['text!dashboard/templates/dashboard-layout.html',
         'app', 
         'marionette',
         'underscore'],
-function(tmpl, Header, Footer, TaskList, TaskCollection, App, Marionette, _){
+function(tmpl, Header, Footer, TaskListView, TaskCollection, App, Marionette, _){
 
     var Dashboard = App.module("Dashboard");
     Dashboard.startWithParent = false;
@@ -56,7 +56,7 @@ function(tmpl, Header, Footer, TaskList, TaskCollection, App, Marionette, _){
             this.headerView = new Header();
             this.footerView = new Footer();
             var taskList = new TaskCollection();
-            this.taskListView = new TaskList({collection:taskList});
+            this.taskListView = new TaskListView({collection:taskList});
 
             this.dsb_header.show(this.headerView);
             this.dsb_footer.show(this.footerView);
