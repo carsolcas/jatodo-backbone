@@ -1,13 +1,13 @@
 'use strict';
 define(['text!dashboard/templates/dashboard-layout.html',
-        'dashboard/views/header',
         'dashboard/views/footer',
         'dashboard/views/task_list',
+        'dashboard/views/day_list',
         'dashboard/collections/task_collection',
         'app', 
         'marionette',
         'underscore'],
-function(tmpl, Header, Footer, TaskListView, TaskCollection, App, Marionette, _){
+function(tmpl, Footer, TaskListView, DayListView, TaskCollection, App, Marionette, _){
 
     var Dashboard = App.module("Dashboard");
     Dashboard.startWithParent = false;
@@ -45,22 +45,22 @@ function(tmpl, Header, Footer, TaskListView, TaskCollection, App, Marionette, _)
     Dashboard.LayoutView = Marionette.LayoutView.extend({
         template: _.template(tmpl),
         regions: {
-            dsb_header: '#dashboard-header',
             dsb_tasks: '#dashboard-tasks',
-            dsb_actives: '#dashboard-actives',
             dsb_dones: '#dashboard-dones',
             dsb_footer: '#dashboard-footer'
         },
+
         onShow:function(){
             Dashboard.controller.trigger('layout:show');
-            this.headerView = new Header();
             this.footerView = new Footer();
             var taskList = new TaskCollection();
-            this.taskListView = new TaskListView({collection:taskList});
 
-            this.dsb_header.show(this.headerView);
+            this.taskListView = new TaskListView({collection:taskList});
+            this.taskListDay = new DayListView();
+
             this.dsb_footer.show(this.footerView);
             this.dsb_tasks.show(this.taskListView );
+            this.dsb_dones.show(this.taskListDay);
             taskList.fetch();
         }
     });
