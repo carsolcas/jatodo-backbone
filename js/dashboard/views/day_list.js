@@ -6,7 +6,7 @@ define(['app', 'marionette', 'underscore',
        return Marionette.CompositeView.extend({
            template : _.template(list_tmpl),
            childView : TaskItemView,
-           childViewContainer : '#task-items-list',
+           childViewContainer : '#day-items-list',
        });
 
 });

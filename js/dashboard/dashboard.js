@@ -47,6 +47,7 @@ function(tmpl, Footer, TaskListView, DayListView, TaskCollection, App, Marionett
         regions: {
             dsb_tasks: '#dashboard-tasks',
             dsb_dones: '#dashboard-dones',
+            dsb_header: '#dashboard-header',
             dsb_footer: '#dashboard-footer'
         },
 

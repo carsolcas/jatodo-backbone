@@ -1,6 +1,22 @@
-<div class="task-list-header columns large-12">
-    <span id="actual-date">01/07/2014</span>
-</div>
-
-<div id="task-items-list" class="task-list columns large-12">
+<div id="day-items-list" class="task-list columns large-12">
+    <div class="hours-wrapper">
+    <% for (var i=0; i < 24; i++){ %>
+        <div class="hour-label">
+            <span class="hour">
+                <% if (i<10){%>0<%}%><%= i %></span>
+        </div>
+    <% } %>
+    </div>
+    <div id="minutes-wrapper">
+        <% for (var i=0; i < 24; i++){ %>
+        <div class="minutes quart-1">
+        </div>
+        <div class="minutes quart-2">
+        </div>
+        <div class="minutes quart-3">
+        </div>
+        <div class="minutes quart-4">
+        </div>
+        <% } %>
+    </div>
 </div>
